@@ -38,7 +38,12 @@ dependencies:
   firebase_core: ^2.25.4
   cloud_firestore: ^4.15.4
   animated_text_kit: ^4.2.2
-
+  firebase_messaging: ^14.7.15
+  firebase_auth: ^4.17.4
+  
+dependency_overrides:
+  firebase_core_platform_interface: 4.4.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

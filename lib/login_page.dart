@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,37 +11,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor:Colors.indigo.shade100,
+    backgroundColor:Colors.indigo.shade100,
+     appBar: AppBar(title: const Text('Login')), 
       body:  Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 18.0,
-          vertical: 200
+          vertical: 50
         ),
         child: Column(
           children: [
-            Row(
-              children: [
-                Image.asset("assets/img/flash.png",
-                height: 40,
-                ),
-                DefaultTextStyle(
-                  style:  TextStyle(
-                    fontSize: 40.0,
-                    color: Colors.indigo.shade600,
-                    fontWeight:FontWeight.bold,
-                  ),
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      WavyAnimatedText('Flash Chat'),
-                      WavyAnimatedText('Look at the waves'),
-                    ],
-                    isRepeatingAnimation: true,
-                    onTap: () {
-                      print("Tap Event");
-                    },
-                  ),
-                ),
-              ],
+            Image.asset("assets/img/flash.png",
+            height: 250,
             ),
            const SizedBox(height: 40),
            const TextField(
@@ -63,14 +42,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
             ),
             ElevatedButton(
-              onPressed: (){}, 
+              onPressed: (){
+                
+              }, 
               child:const Text("Login")
               ),
-              const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("Password")
-              ),
+
           ]
           ),
       ),

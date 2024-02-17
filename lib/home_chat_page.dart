@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:chat/login_page.dart';
+import 'package:chat/register_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,7 @@ class HomeChatPage extends StatefulWidget {
 }
 
 class _HomeChatPageState extends State<HomeChatPage> {
+
   final firestore = FirebaseFirestore.instance;
   
   Future getUsers()async{
@@ -46,39 +49,61 @@ class _HomeChatPageState extends State<HomeChatPage> {
         ),
         child: Column(
           children: [
-            Row(
-              children: [
-                Image.asset("assets/img/flash.png",
-                height: 40,
-                ),
-                DefaultTextStyle(
-                  style:  TextStyle(
-                    fontSize: 40.0,
-                    color: Colors.indigo.shade600,
-                    fontWeight:FontWeight.bold,
+            Center(
+              child: Row(
+                children: [
+                  Hero(
+                    tag:'flash',
+                    child: Image.asset("assets/img/flash.png",
+                    height: 80,
+                    ),
                   ),
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      WavyAnimatedText('Flash Chat'),
-                      WavyAnimatedText('Look at the waves'),
-                    ],
-                    isRepeatingAnimation: true,
-                    onTap: () {
-                      print("Tap Event");
-                    },
+                  DefaultTextStyle(
+                    style:  TextStyle(
+                      fontSize: 35.0,
+                      color: Colors.indigo.shade600,
+                      fontWeight:FontWeight.bold,
+                    ),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        WavyAnimatedText('Flash Chat'.toUpperCase()),
+                        
+                      ],
+                      isRepeatingAnimation: true,
+                      onTap: () {
+                        // ignore: avoid_print
+                        print("Tap Event");
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          
+          const SizedBox(height: 80),
             ElevatedButton(
-              onPressed: (){}, 
+              onPressed: (){
+                Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context){
+                    return const LoginPage();
+                  }
+                  ),
+                 );
+              }, 
               child:const Text("Login")
               ),
               const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: (){}, 
-              child:const Text("Password")
+              onPressed: (){
+                Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context){
+                    return const RegisterPage();
+                  }
+                  ),
+                 );
+              }, 
+              child:const Text("Register")
               ),
           ]
           ),
